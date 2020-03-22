@@ -1,0 +1,27 @@
+Question:
+Query all columns for a city in CITY with the ID 1661.
+
+Solution:
+
+/*
+    Query all columns for a city in CITY with the ID 1661.
+*/
+
+SELECT *
+    FROM CITY
+    WHERE
+            ID = 1661;
+            
+Test Results:
+
+You made this submission a month ago.
+Score:10.00
+Status:Accepted
+
+Compiler Message
+Success
+Input (stdin)
+
+ 
+Expected Output
+1661 Sayama JPN Saitama 162472
