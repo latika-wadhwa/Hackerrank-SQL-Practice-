@@ -1,0 +1,27 @@
+Question:
+
+Query the Western Longitude (LONG_W) for the largest Northern Latitude (LAT_N) in STATION that is less than 137.2345. Round your answer to 4 decimal places.
+
+Solutions:
+
+SELECT 
+    ROUND(LONG_W, 4)
+FROM 
+    STATION
+WHERE 
+    LAT_N < 137.2345
+ORDER BY 
+    LAT_N DESC
+LIMIT 1;
+
+Test Results:
+You have earned 15.00 points!
+
+Compiler Message
+Success
+
+Input (stdin)
+INPUT
+
+Expected Output
+117.2465
