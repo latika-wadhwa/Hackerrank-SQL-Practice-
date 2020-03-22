@@ -1,0 +1,96 @@
+Samantha interviews many candidates from different colleges using coding challenges and contests. Write a query to print the contest_id, hacker_id, name, and the sums of total_submissions, total_accepted_submissions, total_views, and total_unique_views for each contest sorted by contest_id. Exclude the contest from the result if all four sums are .
+
+Note: A specific contest can be used to screen candidates at more than one college, but each college only holds  screening contest.
+
+Explanation
+
+The contest 66406 is used in the college 11219. In this college 11219, challenges 18765 and 47127 are asked, so from the view and submission stats:
+
+Sum of total submissions = 27 + 56 + 28 = 111 
+
+Sum of total accepted submissions = 10 + 18 + 11 = 39
+
+Sum of total views = 43 + 72 + 26 + 15 = 156
+
+Sum of total unique views = 10 + 13 + 19 + 14 = 56
+
+Similarly, we can find the sums for contests 66556 and 94828.
+
+Sample Output
+
+66406 17973 Rose 111 39 156 56
+66556 79153 Angela 0 0 11 10
+94828 80275 Frank 150 38 41 15
+
+Solution:
+
+SELECT 
+          CON.CONTEST_ID
+        , CON.HACKER_ID
+        , CON.NAME
+        , SUM(SG.TOTAL_SUBMISSIONS)
+        , SUM(SG.TOTAL_ACCEPTED_SUBMISSIONS)
+        , SUM(VG.TOTAL_VIEWS)
+        , SUM(VG.TOTAL_UNIQUE_VIEWS)
+    FROM CONTESTS 
+        AS CON
+    JOIN COLLEGES AS COL 
+        ON CON.CONTEST_ID = COL.CONTEST_ID
+    JOIN CHALLENGES AS CHA 
+        ON CHA.COLLEGE_ID = COL.COLLEGE_ID
+    LEFT JOIN
+        (SELECT 
+                SS.CHALLENGE_ID
+                , SUM(SS.TOTAL_SUBMISSIONS) AS TOTAL_SUBMISSIONS
+                , SUM(SS.TOTAL_ACCEPTED_SUBMISSIONS) AS TOTAL_ACCEPTED_SUBMISSIONS 
+         FROM SUBMISSION_STATS AS SS 
+         GROUP BY SS.CHALLENGE_ID) AS SG
+            ON CHA.CHALLENGE_ID = SG.CHALLENGE_ID
+    LEFT JOIN
+        (SELECT 
+                VS.CHALLENGE_ID
+                , SUM(VS.TOTAL_VIEWS) AS TOTAL_VIEWS
+                , SUM(VS.TOTAL_UNIQUE_VIEWS) AS TOTAL_UNIQUE_VIEWS
+        FROM VIEW_STATS AS VS 
+         GROUP BY VS.CHALLENGE_ID) AS VG
+            ON CHA.CHALLENGE_ID = VG.CHALLENGE_ID
+     GROUP BY CON.CONTEST_ID, CON.HACKER_ID, CON.NAME
+     HAVING SUM(SG.TOTAL_SUBMISSIONS) +
+            SUM(SG.TOTAL_ACCEPTED_SUBMISSIONS) +
+            SUM(VG.TOTAL_VIEWS) +
+            SUM(VG.TOTAL_UNIQUE_VIEWS) > 0
+    ORDER BY 
+            CON.CONTEST_ID;
+
+Test Results:
+
+Score:50.00
+Status:Accepted
+
+Compiler Message
+Success
+Input (stdin)
+
+INPUT
+Expected Output
+
+845 579 Rose 1987 580 1635 566 
+858 1053 Angela 703 160 1002 384 
+883 1055 Frank 1121 319 1217 338 
+1793 2655 Patrick 1337 360 1216 412 
+2374 2765 Lisa 2733 815 3368 904 
+2963 2845 Kimberly 4306 1221 3603 1184 
+3584 2873 Bonnie 2492 652 3019 954 
+4044 3067 Michael 1323 449 1722 528 
+4249 3116 Todd 1452 376 1767 463 
+4269 3256 Joe 1018 372 1766 530 
+4483 3386 Earl 1911 572 1644 477 
+4541 3608 Robert 1886 516 1694 504 
+4601 3868 Amy 1900 639 1738 548 
+4710 4255 Pamela 2752 639 2378 705 
+4982 5639 Maria 2705 759 2558 711 
+5913 5669 Joe 2646 790 3181 835 
+5994 5713 Linda 3369 967 3048 954 
+6939 6550 Melissa 2842 859 3574 1004 
+7266 6947 Carol 2758 665 3044 835 
+7280 7030 Paula 1963 554 886 259 {-truncated-}
