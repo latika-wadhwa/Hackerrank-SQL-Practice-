@@ -1,0 +1,34 @@
+Question:
+Query the names of all the Japanese cities in the CITY table. The COUNTRYCODE for Japan is JPN.
+
+Solution:
+/*
+Enter your query here.
+Please append a semicolon ";" at the end of the query and enter your query in a single line to avoid error.
+
+QUESTION - Query the names of all the Japanese cities in the CITY table. The COUNTRYCODE for Japan is JPN.
+
+*/
+
+SELECT NAME
+    FROM CITY
+    WHERE
+    COUNTRYCODE = 'JPN'
+
+Test Results
+
+Score:10.00
+Status:Accepted
+
+Compiler Message
+Success
+Input (stdin)
+
+ 
+Expected Output
+
+Neyagawa 
+Ageo 
+Sayama 
+Omuta 
+Tokuyama 
