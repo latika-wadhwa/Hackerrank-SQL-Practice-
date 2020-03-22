@@ -1,0 +1,50 @@
+Question :
+
+Query the list of CITY names from STATION that do not start with vowels and do not end with vowels. Your result cannot contain duplicates.
+
+Solution:
+
+/*
+
+^ - first letter of the string
+$ - last letter of the string
+[--] - one of the digits in the brackets
+[^--] - should not be one of the digits in the brackets
+.* - in betwwen
+*/
+
+SELECT DISTINCT CITY FROM STATION
+WHERE CITY REGEXP '^[^aeiou].*[^aeiou]$';
+
+
+Test Results:
+
+You have earned 15.00 points!
+
+Compiler Message
+Success
+
+Input (stdin)
+INPUT
+
+Expected Output
+Baker 
+Baldwin 
+Bass Harbor 
+Beaufort 
+Beaver Island 
+Benedict 
+Bennington 
+Berryton 
+Beverly 
+Bison 
+Blue River 
+Bowdon 
+Bowdon Junction 
+Bridgeport 
+Bridgton 
+Brighton 
+Brilliant 
+Bristol 
+Brownstown 
+Buffalo Creek {-truncated-}
