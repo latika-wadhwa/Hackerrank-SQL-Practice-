@@ -1,0 +1,48 @@
+Question:
+Query a list of CITY names from STATION with even ID numbers only. You may print the results in any order, but must exclude duplicates from your answer.
+
+Solution:
+/*
+Enter your query here.
+Please append a semicolon ";" at the end of the query and enter your query in a single line to avoid error.
+
+QUESTION - Query a list of CITY names from STATION with even ID numbers only. You may print the results in any order, but must exclude duplicates from your answer.
+*/
+
+SELECT DISTINCT(CITY)
+    FROM STATION
+    WHERE 
+        ID % 2 = 0
+
+Test Results:
+Score:10.00
+Status:Accepted
+
+Compiler Message
+Success
+
+Input (stdin)
+
+INPUT
+Expected Output
+
+Aguanga 
+Alba 
+Albany 
+Amo 
+Andersonville 
+Archie 
+Athens 
+Atlantic Mine 
+Bainbridge 
+Baker 
+Bass Harbor 
+Bayville 
+Beaufort 
+Bellevue 
+Benedict 
+Bennington 
+Bentonville 
+Biggsville 
+Bison 
+Bono {-truncated-}
