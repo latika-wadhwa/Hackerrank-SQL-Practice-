@@ -1,0 +1,45 @@
+Question:
+
+Query the list of CITY names starting with vowels (i.e., a, e, i, o, or u) from STATION. Your result cannot contain duplicates.
+
+Solution:
+
+/*
+
+   ^ -  Beginning of string
+   [] -  Any character listed between the square brackets
+*/
+SELECT DISTINCT CITY FROM STATION
+WHERE CITY REGEXP '^[aeiou]'
+
+Test Results:
+
+Your Weather Observation Station 6 submission got 10.00 points.
+
+Compiler Message
+Success
+
+Input (stdin)
+INPUT
+
+Expected Output
+Acme 
+Addison 
+Agency 
+Aguanga 
+Alanson 
+Alba 
+Albany 
+Albion 
+Algonac 
+Aliso Viejo 
+Allerton 
+Alpine 
+Alton 
+Amazonia 
+Amo 
+Andersonville 
+Andover 
+Anthony 
+Archie 
+Arispe {-truncated-}
