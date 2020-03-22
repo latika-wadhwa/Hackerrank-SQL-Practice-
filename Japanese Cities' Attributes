@@ -1,0 +1,36 @@
+Question:
+
+Query all attributes of every Japanese city in the CITY table. The COUNTRYCODE for Japan is JPN.
+
+Solution:
+
+/*
+Enter your query here.
+Please append a semicolon ";" at the end of the query and enter your query in a single line to avoid error.
+*/
+/*
+    Query all attributes of every Japanese city in the CITY table. The COUNTRYCODE for Japan is JPN.
+*/
+
+SELECT *
+    FROM CITY 
+    WHERE
+        COUNTRYCODE = 'JPN'
+        
+Test Results:
+
+Score:10.00
+Status:Accepted
+
+Compiler Message
+Success
+
+Input (stdin)
+
+ 
+Expected Output
+1613 Neyagawa JPN Osaka 257315 
+1630 Ageo JPN Saitama 209442 
+1661 Sayama JPN Saitama 162472 
+1681 Omuta JPN Fukuoka 142889 
+1739 Tokuyama JPN Yamaguchi 107078 
